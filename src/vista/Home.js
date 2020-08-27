@@ -45,7 +45,7 @@ const Home = () => {
     }, [])
 
     
-
+    console.log(state)
     return (
       <>
         <form onSubmit={NuevaFuncion}>
@@ -56,19 +56,22 @@ const Home = () => {
         </form>
 
         <div className="row">
-          {state.animes.map((ani, id) => (
-            <div className="col-4" key={id}>
-              <ResumenAnime
-                nombre={ani.attributes.titles.en}
-                url={ani.links.self}
-                img={
-                  ani.attributes.coverImage
-                    ? ani.attributes.coverImage.original
-                    : ""
-                }
-              />
-            </div>
-          ))}
+          {state.animes.map((ani, id) => {
+            console.log(ani)
+            return (
+              <div className="col-4" key={id}>
+                <ResumenAnime
+                  nombre={ani.attributes.titles.en}
+                  anime_id={ani.id}
+                  img={
+                    ani.attributes.coverImage
+                      ? ani.attributes.coverImage.original
+                      : ""
+                  }
+                />
+              </div>
+            )
+          })}
         </div>
       </>
     );
